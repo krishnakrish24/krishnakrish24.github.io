@@ -89,27 +89,3 @@ AFRAME.registerComponent('vidhandler', {
         }
     }
 });
-
-AFRAME.registerComponent('pichandler', {
-
-    init: function() {
-        var pclicks = false;
-        const animatedMarker4 = document.querySelector("#pic-marker");
-        const aEntity4 = document.querySelector("#PhotoPress");
-        document.querySelector("#pic-marker").addEventListener('markerFound', (evt) => {
-                pclicks = true
-            })
-        document.querySelector("#pic-marker").addEventListener('markerLost', (evt) => {
-                pclicks = false
-            }) 
-        
-        animatedMarker4.addEventListener('click', function(ev, target){
-            const intersectedElement4 = ev && ev.detail && ev.detail.intersectedEl;
-            if (aEntity4 && intersectedElement4 === aEntity4) {
-                console.log("Pic:"+pclicks);
-                if(pclicks) {
-                    window.location.href="https://goo.gl/maps/Wwf4J9HKBrPLS3Yh8";
-                }
-            }
-        });
-}});
