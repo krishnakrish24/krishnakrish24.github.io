@@ -104,8 +104,8 @@ AFRAME.registerComponent('mobhandler', {
             }) 
         
         mobMarker.addEventListener('click', function(ev, target){
-            const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-            if (bEntity && intersectedElement === bEntity) {
+            const intersectedElement1 = ev && ev.detail && ev.detail.intersectedEl;
+            if (bEntity && intersectedElement1 === bEntity) {
                 console.log("Mob:"+mclicks);
                 if(mclicks) {
                     window.location.href="tel:04422358957";
@@ -128,8 +128,8 @@ AFRAME.registerComponent('maphandler', {
             }) 
         
         mapMarker.addEventListener('click', function(ev, target){
-            const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-            if (cEntity && intersectedElement === cEntity) {
+            const intersectedElement2 = ev && ev.detail && ev.detail.intersectedEl;
+            if (cEntity && intersectedElement2 === cEntity) {
                 console.log("Map:"+pclicks);
                 if(pclicks) {
                     window.location.href="https://goo.gl/maps/GNpCM9bwkJcxz9n36";
