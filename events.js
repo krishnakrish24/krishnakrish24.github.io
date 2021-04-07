@@ -1,4 +1,5 @@
-AFRAME.registerComponent('markerhandler', {
+window.onload = function(){
+    AFRAME.registerComponent('markerhandler', {
 
     init: function() {
         var clicks = false;
@@ -89,3 +90,4 @@ AFRAME.registerComponent('vidhandler', {
         }
     }
 });
+}
