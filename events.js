@@ -1,20 +1,24 @@
-AFRAME.registerComponent('markerhandler', {
+window.onload = function(){
+    AFRAME.registerComponent('markerhandler', {
 
     init: function() {
         var clicks = false;
         const animatedMarker = document.querySelector("#animated-marker");
         const aEntity = document.querySelector("#MailPress");
         document.querySelector("#animated-marker").addEventListener('markerFound', (evt) => {
-                clicks = true
+                clicks = true;
+                //console.log("Mail Marker Found!");
             })
         document.querySelector("#animated-marker").addEventListener('markerLost', (evt) => {
-                clicks = false
+                clicks = false;
+                //console.log("Mail Marker Lost!");
             }) 
         
         animatedMarker.addEventListener('click', function(ev, target){
-            const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-            if (aEntity && intersectedElement === aEntity) {
+            const intersectedElement1 = ev && ev.detail && ev.detail.intersectedEl;
+            if (aEntity && intersectedElement1 === aEntity) {
                 console.log("Mail:"+clicks);
+                console.log(intersectedElement1);
                 if(clicks) {
                     window.location.href="mailto:hodprinting@annauniv.edu";
                 }
@@ -29,16 +33,19 @@ AFRAME.registerComponent('mobhandler', {
         const mobMarker = document.querySelector("#mob-marker");
         const bEntity = document.querySelector("#MobPress");
         document.querySelector("#mob-marker").addEventListener('markerFound', (evt) => {
-                mclicks = true
+                mclicks = true;
+                //console.log("Mob Marker Found!");
             })
         document.querySelector("#mob-marker").addEventListener('markerLost', (evt) => {
-                mclicks = false
+                mclicks = false;
+                //console.log("Mob Marker Lost!");
             }) 
         
         mobMarker.addEventListener('click', function(ev, target){
-            const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-            if (bEntity && intersectedElement === bEntity) {
+            const intersectedElement2 = ev && ev.detail && ev.detail.intersectedEl;
+            if (bEntity && intersectedElement2 === bEntity) {
                 console.log("Mob:"+mclicks);
+                console.log(intersectedElement2);
                 if(mclicks) {
                     window.location.href="tel:04422358957";
                 }
@@ -49,46 +56,27 @@ AFRAME.registerComponent('mobhandler', {
 AFRAME.registerComponent('maphandler', {
 
     init: function() {
-        var pclicks = false;
+        var mpclicks = false;
         const mapMarker = document.querySelector("#map-marker");
         const cEntity = document.querySelector("#MapPress");
         document.querySelector("#map-marker").addEventListener('markerFound', (evt) => {
-                pclicks = true
+                mpclicks = true
             })
         document.querySelector("#map-marker").addEventListener('markerLost', (evt) => {
-                pclicks = false
+                mpclicks = false
             }) 
         
-        mapMarker.addEventListener('click', function(ev, target){
-            const intersectedElement = ev && ev.detail && ev.detail.intersectedEl;
-            if (cEntity && intersectedElement === cEntity) {
-                console.log("Map:"+pclicks);
-                if(pclicks) {
+        document.querySelector("#map-marker").addEventListener('click', function(ev, target){
+            const intersectedElement3 = ev && ev.detail && ev.detail.intersectedEl;
+            if (cEntity && intersectedElement3 === cEntity) {
+                console.log("Map:"+mpclicks);
+                console.log(intersectedElement3);
+                if(mpclicks) {
                     window.location.href="https://goo.gl/maps/GNpCM9bwkJcxz9n36";
                 }
             }
         });
 }});
-
-AFRAME.registerComponent('vidhandler', {
-    // ...
-    init: function () {
-        this.toggle = false;
-        this.vid = document.querySelector("#video")
-        this.vid.pause();
-    },
-    tick: function () {
-        if (this.el.object3D.visible == true) {
-            if (!this.toggle) {
-                this.toggle = true;
-                this.vid.play();
-            }
-        } else {
-            this.toggle = false;
-            this.vid.pause();
-        }
-    }
-});
 
 AFRAME.registerComponent('pichandler', {
 
@@ -108,8 +96,29 @@ AFRAME.registerComponent('pichandler', {
             if (aEntity4 && intersectedElement4 === aEntity4) {
                 console.log("Pic:"+pclicks);
                 if(pclicks) {
-                    window.location.href="https://goo.gl/maps/Wwf4J9HKBrPLS3Yh8";
+                    window.location.href="https://www.annauniv.edu/PrintingTech/";
                 }
             }
         });
 }});
+
+AFRAME.registerComponent('vidhandler', {
+
+    init: function () {
+        this.toggle = false;
+        this.vid = document.querySelector("#video")
+        this.vid.pause();
+    },
+    tick: function () {
+        if (this.el.object3D.visible == true) {
+            if (!this.toggle) {
+                this.toggle = true;
+                this.vid.play();
+            }
+        } else {
+            this.toggle = false;
+            this.vid.pause();
+        }
+    }
+});
+}
